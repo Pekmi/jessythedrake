@@ -1,0 +1,102 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="worldMinerUI.MainWindow"
+        Width="845"
+        Height="410"
+        Title="worldMinerUI">
+
+    <StackPanel Margin="22" Spacing="16">
+        <!-- Bouton Start/Stop -->
+        <Button x:Name="StartStopButton"
+                Width="800"
+                Height="40"
+                Margin="0,-5,0,0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Content="Lancer" />
+
+        <!-- TextBoxes -->
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <TextBox x:Name="Box1" Width="80" FontSize="11" />
+            <TextBox x:Name="Box2" Width="80" FontSize="11" />
+            <TextBox x:Name="Box3" Width="80" FontSize="11" />
+            <TextBox x:Name="Box4" Width="80" FontSize="11" />
+            <TextBox x:Name="Box5" Width="80" FontSize="11" />
+            <TextBox x:Name="Box6" Width="80" FontSize="11" />
+            <TextBox x:Name="Box7" Width="80" FontSize="11" />
+            <TextBox x:Name="Box8" Width="80" FontSize="11" />
+            <TextBox x:Name="Box11" Width="80" FontSize="11" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <TextBox x:Name="Box100" Width="80" />
+            <TextBox x:Name="Box200" Width="80"/>
+            <TextBox x:Name="Box300" Width="80"/>
+            <TextBox x:Name="Box400" Width="80"/>
+            <TextBox x:Name="Box500" Width="80"/>
+            <TextBox x:Name="Box600" Width="80"/>
+            <TextBox x:Name="Box700" Width="80"/>
+            <TextBox x:Name="Box800" Width="80"/>
+            <TextBox x:Name="Box1100" Width="80"/>
+        </StackPanel>
+
+        <!-- Grid principale pour indicators + logs -->
+        <Grid Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Indicateurs d'étape à gauche -->
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="12" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,-15,0,0">
+                    <Rectangle x:Name="IndicatorStep0" Width="24" Height="24" Fill="Red"/>
+                    <TextBlock Text="Récup PUUIDs" Margin="0,2,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Rectangle x:Name="IndicatorStep1" Width="24" Height="24" Fill="Red"/>
+                    <TextBlock Text="Connexion LCU" Margin="0,2,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Rectangle x:Name="IndicatorStep2" Width="24" Height="24" Fill="Red"/>
+                    <TextBlock Text="Token / Requête" Margin="0,2,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Rectangle x:Name="IndicatorStep3" Width="24" Height="24" Fill="Red"/>
+                    <TextBlock Text="Qualité" Margin="0,2,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Rectangle x:Name="IndicatorStep4" Width="24" Height="24" Fill="Red"/>
+                    <TextBlock Text="Vitesse" Margin="0,2,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                    <Rectangle x:Name="IndicatorStep5" Width="24" Height="24" Fill="Black"/>
+                    <TextBlock x:Name="IndicatorStep5TextBox" Text=""/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- LogBox principal à droite, en haut -->
+            <TextBox x:Name="LogBox"
+                     Grid.Row="0" Grid.Column="1"
+                     Height="180"
+                     Width="620"
+                     IsReadOnly="True"
+                     AcceptsReturn="True"
+                     Margin="40,-50,0,0"/>
+
+            <!-- LogBox2 à droite, en dessous du LogBox principal -->
+            <TextBox x:Name="LogBox2"
+                     Grid.Row="1" Grid.Column="1"
+                     Height="20"
+                     Width="620"
+                     Margin="40,-20,0,0"
+                     IsReadOnly="True"
+                     AcceptsReturn="True"/>
+        </Grid>
+    </StackPanel>
+</Window>

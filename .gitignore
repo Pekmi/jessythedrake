@@ -1,0 +1,5 @@
+gameSniffer/match_data
+gameSniffer/worldMinerUI/bin
+*.pyc
+__pycache__/
+*.log
