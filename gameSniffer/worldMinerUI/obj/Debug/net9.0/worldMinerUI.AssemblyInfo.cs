@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("worldMinerUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+febf340b8457920aa1c82e6c74a2dbfa57368196")]
 [assembly: System.Reflection.AssemblyProductAttribute("worldMinerUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("worldMinerUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

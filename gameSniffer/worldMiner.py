@@ -100,7 +100,8 @@ if __name__ == "__main__":
         else:
 
             print("Aucun fichier JSON trouvé dans match_data. \nOn démarre avec le puuid.")
-            custom_puuid = "ed2c2fa0-709d-5177-b19a-57d940c10a6f"
+            # custom_puuid = "ed2c2fa0-709d-5177-b19a-57d940c10a6f"
+            custom_puuid = "f2362941-2b60-5ea2-b71b-f60e7a67c09a"
             puuids = [custom_puuid]
 
 
