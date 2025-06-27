@@ -105,45 +105,35 @@ def get_json_from_puuid(puuid, puuids, nofloop):
     """
     Récupère les données de match complètes pour un joueur donné à partir de son PUUID.
     """
-
-    # C'est ce qui prend du temps
-    game_ids = get_recent_game_ids(puuid, count=20)
-    # print(f"Récupération des {len(game_ids)} dernières parties du joueur {puuid}...")
-    if game_ids == []:
-        print(f"Aucune partie trouvée pour le PUUID {puuid}.")
-        return [], []
-
-    data = []
     startTime = time.time()
+    localpath = os.path.dirname(__file__)
+    blacklist_path = os.path.join(localpath, "match_data", "jsonblacklist.txt")
+    with open(blacklist_path, "r", encoding="utf-8") as f:
+        blacklist = {line.strip() for line in f if line.strip()}
 
-    # Utilisation de ThreadPoolExecutor pour paralléliser les requêtes
+    game_ids = get_recent_game_ids(puuid, count=20)
+    filtered_game_ids = [gid for gid in game_ids if f"match_{gid}" not in blacklist]
+    if not filtered_game_ids:
+        print(f"Aucune partie à miner pour le PUUID {puuid} (tout déjà miné).")
+        return [], [], 0
+
     def fetch(game_id):
         return get_full_match_data(game_id)
 
     with ThreadPoolExecutor(max_workers=20) as executor:
-        data = list(executor.map(fetch, game_ids))
+        data = list(executor.map(fetch, filtered_game_ids))
 
-    # for game_id in game_ids:
-    #     print(f"Récupération des données pour le PUUID : {puuid}  | Match {game_id}...", end='\r', flush=True)
-    #     data.append(get_full_match_data(game_id))
-
-
-    print(f"MR:{round((len(puuids)-nofloop)*19)}")
-    print(f"TR:{((len(puuids)-nofloop)*19/3/60):.2f}")
+        
+    print(f"MR:{len(puuids)-nofloop}")
+    print(f"TR:{((len(puuids)-nofloop)*16/6/60):.2f}")
     print(f"PR:{((len(puuids)-nofloop)*19*0.052):.2f}")
     # print(f"NM:{len(data)}")
     print(f"TM:{(time.time()-startTime):.2f}", end='\n', flush=True)
 
-    NM = len(data)
-    # TM = (time.time() - startTime)
-    # SP = NM / TM if TM > 0 else 0
-    # print(f"SP:{SP:.2f}")
 
-    if not data or not game_ids:
-        time.sleep(2)
-        get_json_from_puuid(puuid, puuids, nofloop)
-    else:
-        return data, game_ids, NM
+    NM = len(data)
+    return data, filtered_game_ids, NM
+
 
 
 

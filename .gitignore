@@ -1,5 +1,7 @@
 gameSniffer/match_data
+gameSniffer/old_match_data
 gameSniffer/worldMinerUI/bin
 *.pyc
-__pycache__/
 *.log
+__pycache__/
+RELEASE/

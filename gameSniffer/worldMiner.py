@@ -139,6 +139,11 @@ if __name__ == "__main__":
                 # print(f"Enregistrement des données Json...")
                 with tt("SJ"): 
                     for json_data in newJson:
+                        
+                        if json_data.get("queueId") not in [400, 420, 440]:
+                            NM -= 1
+                            continue
+
                         game_id = json_data.get("gameId", "inconnu")
                         sniffHistory.save_match_json(game_id, json_data, puuid)
 

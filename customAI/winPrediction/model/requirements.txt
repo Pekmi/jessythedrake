@@ -1,0 +1,7 @@
+numpy
+pandas
+scikit-learn
+xgboost
+
+#pip install --upgrade pip
+#pip install -r requirements.txt
